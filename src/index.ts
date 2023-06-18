@@ -14,7 +14,7 @@ app.use(express.json())
 app.use('/api/patient',PatientRouter);
 app.use('/api/doctor',DoctorRouter);
 
-app.listen(5000,()=>{
-    console.log("listenning on port 5000");
+app.listen(80,()=>{
+    console.log("listenning on port 80");
 })
 
