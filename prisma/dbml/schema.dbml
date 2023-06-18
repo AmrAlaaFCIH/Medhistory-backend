@@ -1,0 +1,85 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Patients {
+  P_ID String [pk]
+  P_First_Name String [not null]
+  P_Last_Name String [not null]
+  P_Marital_Status String [not null]
+  P_Email String [not null]
+  P_Password String [not null]
+  P_Address String [not null]
+  P_DOB DateTime [not null]
+  P_Emergency_Contact String [not null]
+  P_Habits String [not null]
+}
+
+Table Patient_Phone {
+  P_phone String [not null]
+  P_ID String [not null]
+
+  indexes {
+    (P_phone, P_ID) [pk]
+  }
+}
+
+Table Doctors {
+  Doc_ID String [pk]
+  Doc_First_Name String [not null]
+  Doc_Last_Name String [not null]
+  Doc_Email String [not null]
+  Doc_Password String [not null]
+  Doc_Address String [not null]
+}
+
+Table Doctor_Phone {
+  Doc_Phone String [not null]
+  Doc_ID String [not null]
+
+  indexes {
+    (Doc_Phone, Doc_ID) [pk]
+  }
+}
+
+Table Notfications {
+  Not_ID Int [pk, increment]
+  P_ID String [not null]
+  Doc_ID String [not null]
+  Status String [not null]
+}
+
+Table Admins {
+  Adm_ID Int [pk, increment]
+  Adm_First_Name String [not null]
+  Adm_Last_Name String [not null]
+  Adm_Email String [not null]
+  Adm_Password String [not null]
+}
+
+Table medical {
+  Med_ID Int [pk, increment]
+  P_ID String [not null]
+  Prescription Bytes [not null]
+  Follow_Up DateTime [not null]
+  Measurments Bytes [not null]
+  x_ray Bytes [not null]
+  Scans Bytes [not null]
+  Medicines_Date DateTime [not null]
+  Medicines_Dose Int [not null]
+}
+
+Table doctor_patient {
+  doctorsId String [ref: > Doctors.Doc_ID]
+  patientsId String [ref: > Patients.P_ID]
+}
+
+Ref: Patient_Phone.P_ID > Patients.P_ID
+
+Ref: Doctor_Phone.Doc_ID > Doctors.Doc_ID
+
+Ref: Notfications.P_ID > Patients.P_ID
+
+Ref: Notfications.Doc_ID > Doctors.Doc_ID
+
+Ref: medical.P_ID > Patients.P_ID
