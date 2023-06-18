@@ -24,8 +24,9 @@ model Patients{
   P_Password String
   P_Address String
   P_DOB DateTime
-  P_Emergency_Contact String
-  P_Habits String
+  P_Phone_Number_Relative String
+  P_Gender String
+  P_Blood_Type String
   phones Patient_Phone[]
   notifications Notfications[]
   medicalHistory medical[]
@@ -41,12 +42,14 @@ model Patient_Phone{
 }
 
 model Doctors{
-  Doc_ID String @id
+  Doc_ID String @id @default(uuid())
   Doc_First_Name String
   Doc_Last_Name String
-  Doc_Email String
+  Doc_Email String @unique
   Doc_Password String
   Doc_Address String
+  Doc_Card_Number String
+  Doc_Speciality String
   phones Doctor_Phone[]
   notifications Notfications[]
   Patients Patients[] @relation("doctor_patient")
@@ -60,30 +63,22 @@ model Doctor_Phone{
 }
 
 model Notfications{
-  Not_ID Int @id @default(autoincrement())
+  Not_ID String @id @default(uuid())
   P_ID String
   Doc_ID String
-  Status String
+  Status Boolean @default(false)
   patient Patients @relation(fields: [P_ID],references: [P_ID])
   doctor Doctors @relation(fields: [Doc_ID],references: [Doc_ID])
 }
 
-model Admins{
-  Adm_ID Int @id @default(autoincrement()) 
-  Adm_First_Name String
-  Adm_Last_Name String
-  Adm_Email String
-  Adm_Password String
-}
 
 model medical{
   Med_ID Int @id @default(autoincrement())
   P_ID String
-  Prescription Bytes
+  MedicineName String
   Follow_Up DateTime
-  Measurments Bytes
-  x_ray Bytes
-  Scans Bytes
+  x_ray Bytes?
+  Medical_Analysis Bytes?
   Medicines_Date DateTime
   Medicines_Dose Int
   patient Patients @relation(fields: [P_ID],references: [P_ID])

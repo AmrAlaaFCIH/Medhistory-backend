@@ -11,8 +11,9 @@ Table Patients {
   P_Password String [not null]
   P_Address String [not null]
   P_DOB DateTime [not null]
-  P_Emergency_Contact String [not null]
-  P_Habits String [not null]
+  P_Phone_Number_Relative String [not null]
+  P_Gender String [not null]
+  P_Blood_Type String [not null]
 }
 
 Table Patient_Phone {
@@ -28,9 +29,11 @@ Table Doctors {
   Doc_ID String [pk]
   Doc_First_Name String [not null]
   Doc_Last_Name String [not null]
-  Doc_Email String [not null]
+  Doc_Email String [unique, not null]
   Doc_Password String [not null]
   Doc_Address String [not null]
+  Doc_Card_Number String [not null]
+  Doc_Speciality String [not null]
 }
 
 Table Doctor_Phone {
@@ -43,28 +46,19 @@ Table Doctor_Phone {
 }
 
 Table Notfications {
-  Not_ID Int [pk, increment]
+  Not_ID String [pk]
   P_ID String [not null]
   Doc_ID String [not null]
-  Status String [not null]
-}
-
-Table Admins {
-  Adm_ID Int [pk, increment]
-  Adm_First_Name String [not null]
-  Adm_Last_Name String [not null]
-  Adm_Email String [not null]
-  Adm_Password String [not null]
+  Status Boolean [not null, default: false]
 }
 
 Table medical {
   Med_ID Int [pk, increment]
   P_ID String [not null]
-  Prescription Bytes [not null]
+  MedicineName String [not null]
   Follow_Up DateTime [not null]
-  Measurments Bytes [not null]
-  x_ray Bytes [not null]
-  Scans Bytes [not null]
+  x_ray Bytes
+  Medical_Analysis Bytes
   Medicines_Date DateTime [not null]
   Medicines_Dose Int [not null]
 }
