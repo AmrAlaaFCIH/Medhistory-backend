@@ -139,7 +139,6 @@ interface MedicineBody {
     patientId: string;
     MedicineName: string;
     followUp: string;
-    measurments: Buffer;
     xRay: Buffer;
     medicalAnalysis: Buffer;
     medicinesDate: string;
@@ -162,9 +161,6 @@ router.post('/add-medicine', [
     body('followUp')
         .notEmpty()
         .withMessage('follow up info can not be empty'),
-    body('measurments')
-        .notEmpty()
-        .withMessage('measurments can not be empty'),
     body('xRay')
         .notEmpty()
         .withMessage('xRay can not be empty'),
