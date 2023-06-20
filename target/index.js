@@ -8,10 +8,12 @@ const express_1 = __importDefault(require("express"));
 const client_1 = require("@prisma/client");
 const patient_1 = __importDefault(require("./api/patient"));
 const doctor_1 = __importDefault(require("./api/doctor"));
+const cors_1 = __importDefault(require("cors"));
 //export prisma client to all routers
 exports.prisma = new client_1.PrismaClient();
 exports.salt_rounds = 10;
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use('/api/patient', patient_1.default);
 app.use('/api/doctor', doctor_1.default);

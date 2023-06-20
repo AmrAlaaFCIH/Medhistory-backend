@@ -18,7 +18,6 @@ RUN mkdir target
 
 COPY target/ target/
 
-ENV DATABASE_URL="mysql://sysuser:sysadmin1@e-medhistory.c40gsqewozq1.me-central-1.rds.amazonaws.com:3306/e-medhistory"
 
 CMD [ "node","target/index.js" ]
 
