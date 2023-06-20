@@ -18,6 +18,5 @@ RUN mkdir target
 
 COPY target/ target/
 
-
 CMD [ "node","target/index.js" ]
 

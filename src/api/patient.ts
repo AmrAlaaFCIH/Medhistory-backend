@@ -329,7 +329,7 @@ router.post('/login', [
     }
     const canLogin = await bcrypt.compare(req.body.password, result.P_Password);
     if (canLogin) {
-        return res.status(200).json({ status: true, msg: "user can login" });
+        return res.status(200).json({ status: true, data: result });
     } else {
         return res.status(400).json({ status: false, msg: "password is not right" })
     }
