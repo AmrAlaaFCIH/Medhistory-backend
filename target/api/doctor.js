@@ -141,12 +141,6 @@ router.post('/add-medicine', [
     (0, express_validator_1.body)('followUp')
         .notEmpty()
         .withMessage('follow up info can not be empty'),
-    (0, express_validator_1.body)('xRay')
-        .notEmpty()
-        .withMessage('xRay can not be empty'),
-    (0, express_validator_1.body)('medicalAnalysis')
-        .notEmpty()
-        .withMessage('medicalAnalysis can not be empty'),
     (0, express_validator_1.body)('medicinesDate').notEmpty()
         .withMessage("medicines Date can't be empty")
         .isDate()
