@@ -198,7 +198,7 @@ router.post('/add-medicine', [
             P_ID:req.body.patientId,
             MedicineName:req.body.MedicineName,
             Medical_Analysis:req.body.medicalAnalysis,
-            Follow_Up:req.body.followUp,
+            Follow_Up:new Date(req.body.followUp),
             Medicines_Date:new Date(req.body.medicinesDate),
             Medicines_Dose: Number(req.body.medicinesDose),
             x_ray:req.body.xRay
